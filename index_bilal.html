@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Index - PGEproject</title>
+	<!--External Css-->
+	<link href="PGEProject_styles.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+
+	<!--Stage 1-->
+	<div id="thumbnail">
+	    <img class="gallery" src="images/Project_image01.png" width="100%"   onClick="currentSlide(1)" alt="Hollywood Sign">
+		<img class="gallery" src="images/Project_image02.png" width="100%"   onClick="currentSlide(2)" alt="Santa Monica">
+		<img class="gallery" src="images/Project_image03.png" width="100%"   onClick="currentSlide(3)" alt="Los Angeles">
+		<img class="gallery" src="images/Project_image04.png" width="100%"   onClick="currentSlide(4)" alt="Vinewood Los Angeles">
+		<img class="gallery" src="images/Project_image05.png" width="100%"   onClick="currentSlide(5)" alt="Del Perro Pier">
+		<img class="gallery" src="images/Project_image06.png" width="100%"   onClick="currentSlide(6)" alt="Sunset Drive">
+	</div>
+	<!--Display the caption of the images-->
+<div id="caption-container">
+<p class="caption">Hollywood Sign</p>
+</div>
+
+<!--Display of slide image-->
+<div id="slider">
+<div id="box">
+<img src="images/Project_image01.png" width="100%"  alt="Wolf"/> 
+</div> 
+
+<!-- %#10094 is a unicode for previous arrow
+     %#10095 is a unicode for next arrow -->
+
+<button class="prev" onClick="prevImage()">&#10094;</button>
+<button class="next" onClick="nextImage()">&#10095;</button>
+<!--Create play/pause button to control the slideshow-->
+<div id="Play-Pause" onClick="pauseResume()">Pause</div>
+</div>
+
+	
+<script>
+//script command:
+	
+	//Required to get the alt text from
+var gallery = document.getElementsByClassName("gallery");
+//Required to set the caption text
+var captionText = document.getElementById("caption-container");
+	
+	var image = new Array();
+   image[0] = "images/Project_image01.png";
+   image[1] = "images/Project_image02.png"; 
+   image[2] = "images/Project_image03.png";
+   image[3] = "images/Project_image04.png";
+   image[4] = "images/Project_image05.png";
+   image[5] = "images/Project_image06.png";
+	
+	
+	//Declare and initialize the slide index to 1
+    var index = 1;
+	
+	//Get the slider content for the purpose of setting the images in the slider
+    var slider_content = document.getElementById("box");
+	
+	
+	
+	function nextImage()
+    {
+	if(index < 6) //check if the slide index is less than array length
+	{
+		index++;//then increment slide index by 1
+	}
+	
+	else if(index == 6) //else if slide index is equal to 6
+	{
+		index = 1;//set slide index to 1
+	}
+	
+	slider_content.innerHTML = "<div class='fade'><img src ="+image[index-1]+"></div>";//Display the correct image in the slider with image taken from the image array
+    
+      captionText.innerHTML = gallery[index-1].alt;                     
+      }
+	
+	
+	
+      function prevImage()
+      {
+	  
+      if(index > 1) //check if the slide index is greater than 1
+	    
+      {
+      index-- ; //then decrement slide index by 1
+      }
+      else if(index == 1) //else if slide index is equal to 1
+      {
+      index = 6 ; //set slide index to 6
+      }
+      //Display the correct image in the slider with image taken from the image array.
+      slider_content.innerHTML = "<div class='fade'><img src ="+image[index-1]+"></div>";
+	 
+	   captionText.innerHTML = gallery[index-1].alt;
+      }
+	
+	
+	  function currentSlide(number)
+      {
+      //store the image slide number into index
+      index = number;
+		  
+		
+      //Display the correct image in the slider with image taken from the image
+      //array.
+      slider_content.innerHTML = "<div class='fade'><img src ="+image[index-1]+"></div>" ;
+		  
+		captionText.innerHTML = gallery[index-1].alt;
+      }
+	
+	
+	
+	
+    var slideInterval = setInterval(nextImage,5000);                
+	
+	function pauseResume() {
+     //required for the purpose of changing the Pause/Play text in the link later
+    
+		var pauseButton = document.getElementById("Play-Pause");
+   
+		/*slideTimer contains returnID (number) when the slide is played, in this
+     case when slideTimer is not a null means the slideshow is playing */
+     
+		
+		if (slideInterval != null)
+     
+		{
+     //stop the slideshow
+     
+			clearInterval(slideInterval);
+     //set the slideTimer to null to indicate the slideshow is now paused
+     
+			slideInterval = null;
+     
+			pauseButton.innerHTML = "Play"; //Change the link text to Play
+	 
+		}
+     
+		else
+     
+		{
+     //Resume the slider, use setInterval method
+     slideInterval =  setInterval(nextImage,5000);
+     pauseButton.innerHTML = "Pause"; //Change the link text to Pause
+     
+		}
+	}
+                   
+	
+                    
+                           
+                  
+	
+</script>
+	
+	
+	
+</body>
+</html>

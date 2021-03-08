@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+/*Background*/
+
+
+/*To align the thumbnail container to the center and add padding of 20px */
+#thumbnail {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/*To set images width to 12.5% to fix 6 images in a row */
+#thumbnail img {
+width:  12.5%;
+margin: 3px;
+border: 5px solid white;
+cursor: pointer;
+opacity: 06;
+}
+
+/*To style the caption container */
+#caption-container {
+text-align: center;
+font-family: 'PT Serif', serif;
+color: black;
+width: 100;
+}
+
+/* To set the slider dimension */
+#slider {
+width: 700px;
+height: 350px;
+margin: 20px auto;
+position: relative;
+border: 10px solid white;
+box-shadow: 0px 0px 5px 2px black;
+	
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2.5s;
+  animation-name: fade;
+  animation-duration: 2.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/*To set the NEXT and PREVIOUS buttons */
+button {
+padding: 20px;
+border: none;
+background: black;
+font-size: 30px;
+color: white;
+position: absolute;
+top: 45%;
+cursor: pointer;
+}
+
+/*To set the border of the next button */
+.next{
+border-radius: 10px 0px 0px 10px;
+margin-left: 645px;
+}
+
+/*To set the border of the previous button */
+.prev{
+border-radius: 0px 10px 10px 0px;
+}
+
+/*To set the pause/play link style and position */
+#Play-Pause{
+font-family: 'PT Serif', serif;
+cursor: pointer;
+color: white;
+font-size: 15px;
+padding: 8px 8px;
+position: absolute;
+bottom: 8px;
+width: 100%;
+text-align: center;
+}
+
+#Play-Pause:hover{
+background-color: black;
+}
+
+#thumbnail img:hover{
+	opacity: 1.0;
+	border: 5px solid #490606;
+	
+}
